@@ -12,9 +12,9 @@ public class serializer {
     static contactList c;
 
     //public static void main(String[] args) throws IOException, ClassNotFoundException {
-    public  static  void serializer1(String arg1, String arg2) throws IOException, ClassNotFoundException {
+    public  static  void serializer1(String arg1, String arg2, String arg3, String arg4) throws IOException, ClassNotFoundException {
         String filename = "time.ser";
-        c = new contactList(arg1, arg2);
+        c = new contactList(arg1, arg2, arg3, arg4);
 
         // save the object to file
         FileOutputStream fos =  new FileOutputStream(filename);

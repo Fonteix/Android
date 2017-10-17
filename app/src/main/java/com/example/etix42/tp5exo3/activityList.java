@@ -40,6 +40,8 @@ public class activityList extends AppCompatActivity {
         //Récupération des arguments de l'autre vue et on met dans la liste
         map = new HashMap<String, String>();
         map.put("Name", getIntent().getStringExtra("varTransferName"));
+        map.put("LastName", getIntent().getStringExtra("varTransferLastName"));
+        map.put("Mail", getIntent().getStringExtra("varTransferMail"));
         map.put("Phone", getIntent().getStringExtra("varTransferPhone"));
         listItem.add(map);
 
@@ -59,7 +61,14 @@ public class activityList extends AppCompatActivity {
         varListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(activityList.this, listItem.get(i).get("Name") + "\n" + listItem.get(i).get("Phone").toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(
+                        activityList.this,
+                        listItem.get(i).get("Name") + "\n"+
+                        listItem.get(i).get("LastName") + "\n"+
+                        listItem.get(i).get("Mail") + "\n"+
+                        listItem.get(i).get("Phone").toString(),
+                        Toast.LENGTH_SHORT
+                ).show();
             }
         });
 
@@ -80,7 +89,7 @@ public class activityList extends AppCompatActivity {
     //Sauvegarde de la hashmap
     public void buttonSave(View view) throws IOException, ClassNotFoundException {
 
-        serializer1("aze", "eza");
+        serializer1("test", "test", "test@gmail.com", "06");
 
         Toast.makeText(activityList.this, "Liste : " + c, Toast.LENGTH_SHORT).show();
 
