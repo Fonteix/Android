@@ -34,7 +34,7 @@ public class activityList extends AppCompatActivity {
         //Création de la liste
         varListView = (ListView) findViewById(R.id.listView);
         final ArrayList<HashMap<String, String>> listItem = new ArrayList<HashMap<String,String>>();
-        HashMap<String, String>map;
+        final HashMap<String, String>map;
 
 
         //Récupération des arguments de l'autre vue et on met dans la liste
@@ -73,11 +73,12 @@ public class activityList extends AppCompatActivity {
         });
 
 
-        //pression longue sur la liste
+        //pression longue sur la liste : suppression
         varListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(activityList.this, "Delete " + listItem.get(i).get("Name") + " ?", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activityList.this, "Delete " + listItem.get(i).get("Name"), Toast.LENGTH_SHORT).show();
+                map.remove(listItem.get(i));
                 return false;
             }
         });
