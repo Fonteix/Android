@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\EtiX42\Documents\GitHub\Android\TP5exo3\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="f9193e26d720402360a2619477bcf71d893706bb">
+        <dex dex="C:\Users\EtiX42\Documents\GitHub\Android\TP5exo3\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_9fa18c4f2f3a759c309cece5cd5a16d2c8bd7b2c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\EtiX42\Documents\GitHub\Android\TP5exo3\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="C:\Users\EtiX42\Documents\GitHub\Android\TP5exo3\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_09c484f4c5de27b2bacc0d518c291c1af8b8fb56\classes.dex" />
+    </item>
+
+</items>
