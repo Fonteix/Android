@@ -1,5 +1,6 @@
 package com.example.p1512264.miniprojet;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
@@ -13,6 +14,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -23,7 +25,7 @@ import javax.net.ssl.HttpsURLConnection;
 public class DownloadFilesTask extends AsyncTask<Object, Void, String> {
 
     public TextView tv;
-
+    ArrayList<seisme> seismeList = new ArrayList<>();
 
     @Override
     protected String doInBackground(Object... params) {
@@ -32,6 +34,10 @@ public class DownloadFilesTask extends AsyncTask<Object, Void, String> {
         String descriptions="";
         String rssUrl = (String) params[0];
         tv = (TextView) params[1];
+        String titre ="";
+        String description ="";
+
+
         try {
             URL url = new URL(rssUrl);
             HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
@@ -47,23 +53,29 @@ public class DownloadFilesTask extends AsyncTask<Object, Void, String> {
 
                     if ((eventType == XmlPullParser.START_TAG)){
                         if (xpp.getName().equals("title")) {
-                            String titre = xpp.nextText();
-                            Log.d("titre",titre);
+                            titre = xpp.nextText();
+                            //Log.d("titre",titre);
                             titres += titre +'\n';
                         }
 
 
-                            /*else if ((xpp.getName().contains("georss")) && (xpp.getName().contains("point"))) {
-                                String description = xpp.nextText();
-                                Log.d("description",description);
+                            else if (xpp.getName().equals("point")) {
+                                description = xpp.nextText();
+                                //Log.d("description",description);
                                 descriptions += description +'\n';
-                            }*/
+                            }
+
+
 
                         /*else if(xpp.getName().equals("link")) {
                             String link = xpp.nextText();
                         }*/
 
                     }
+
+                    seisme seisme = new seisme(titre, description);
+                    seismeList.add(seisme);
+
                     eventType = xpp.next();
                 }
               urlConnection.disconnect();
@@ -74,13 +86,21 @@ public class DownloadFilesTask extends AsyncTask<Object, Void, String> {
         } catch (XmlPullParserException e) {
             e.printStackTrace();
         }
+
+
         return titres;
     }
 
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-        tv.setText(result);
+        tv.setText(seismeList.toString());
         Log.d("state", result);
+
+        /*Intent intent = new Intent(DownloadFilesTask.this, MainActivity.class);
+        intent.putExtra("test", seismeList);
+        startActivity(intent);
+        //delegate
+        */
     }
 
 }

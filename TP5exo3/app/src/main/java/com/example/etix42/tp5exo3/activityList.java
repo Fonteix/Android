@@ -70,7 +70,7 @@ public class activityList extends AppCompatActivity {
         );
         varListView.setAdapter(adapter);
 
-
+//____________________________________________________________________________________________________________________________________________________
         //pression sur la liste
         varListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

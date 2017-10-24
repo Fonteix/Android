@@ -37,6 +37,7 @@
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <ListView
+        android:id="@+id/listView"
         android:layout_width="214dp"
         android:layout_height="353dp"
         tools:layout_editor_absoluteX="85dp"
