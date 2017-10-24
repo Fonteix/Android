@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void onClick(View view) {
-        DownloadFilesTask downloadFilesTask = new DownloadFilesTask();
-        downloadFilesTask.execute("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.atom", tv);
+        //DownloadFilesTask downloadFilesTask = new DownloadFilesTask();
+        //downloadFilesTask.execute("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.atom", tv);
 
         //Création de la liste
         varListView = (ListView) findViewById(R.id.listView);

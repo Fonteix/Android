@@ -1,9 +1,5 @@
 package com.example.p1512264.miniprojet;
 
-/**
- * Created by EtiX42 on 24/10/2017.
- */
-
 public class seisme {
 
     private String title;
