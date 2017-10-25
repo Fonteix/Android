@@ -22,9 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
     ListView varListView;
     ArrayList<seisme> seismeListe = new ArrayList<>();
-    EditText title, link, description;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         TestWifiData();
-
 
 
         Intent intent = getIntent();
@@ -68,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         //fin du refresh----------------------------------------------------------------------------
 
 
-        //pression sur la liste
+        //pression sur la liste, on va dans détails
         varListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -77,27 +73,10 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("varTransferTitle", listItem.get(i).get("Title").toString());
                 intent.putExtra("varTransferDescription", listItem.get(i).get("Description").toString());
 
-
                 startActivity(intent);
-
-                /*Toast.makeText(
-                        MainActivity.this,
-                        listItem.get(i).get("Title") + "\n"+
-                        listItem.get(i).get("Description") + "\n",
-                        Toast.LENGTH_SHORT
-                ).show();*/
             }
         });
     }
-
-
-    /*public static String getText(){
-        String data = listItem.get(i).get("Title");
-        return data;
-    }*/
-
-
-
 
 
     public boolean TestWifiData() {
@@ -158,7 +137,5 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-
 
 }

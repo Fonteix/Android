@@ -62,7 +62,7 @@ public class Downloader extends AppCompatActivity {
 
 
                     String bufferTitle ="";
-                    String bufferDescription ="";
+                    //String bufferDescription ="";
                     int eventType = xpp.getEventType();
                     while (eventType != XmlPullParser.END_DOCUMENT) {
 
@@ -79,13 +79,14 @@ public class Downloader extends AppCompatActivity {
                             }
 
 
+
                             //buffer qui vérifie si le dernier est pareil que le précédent
                             if(!titre.equalsIgnoreCase(bufferTitle)) {
                                 seisme seisme = new seisme(titre, description);
                                 seismeList.add(seisme);
                             }
                             bufferTitle = titre;
-                            bufferDescription = bufferDescription;
+                            //bufferDescription = bufferDescription;
                         }
 
 
@@ -111,24 +112,11 @@ public class Downloader extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            //tv.setText(seismeList.toString());
-            //Log.d("state", result);
-
 
             Intent intent = new Intent(Downloader.this, MainActivity.class);
-
-            //jai rajouté ca
-            /*String title = result;
-            String coord = result;
-            seisme seisme = new seisme(title, coord);
-            seismeList.add(seisme);*/
-
-
             intent.putExtra("ListeSeisme", seismeList);
 
-
             startActivity(intent);
-
             finish();
         }
     }
