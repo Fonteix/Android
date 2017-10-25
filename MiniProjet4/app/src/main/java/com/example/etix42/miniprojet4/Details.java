@@ -14,6 +14,8 @@ public class Details extends AppCompatActivity {
 
         TextView textViewTitle = (TextView)findViewById(R.id.TVTitle);
         TextView textViewDescription = (TextView)findViewById(R.id.TVDescription);
+        TextView textViewUpdated = (TextView)findViewById(R.id.TVUpdated);
+        TextView textViewCoord = (TextView)findViewById(R.id.TVCoord);
 
         Bundle bundle = getIntent().getExtras();
 
@@ -21,6 +23,12 @@ public class Details extends AppCompatActivity {
         textViewTitle.setText("Title : " + varTitle);
 
         String varDescription = bundle.getString("varTransferDescription");
-        textViewDescription.setText("Geographic position : " + varDescription);
+        textViewDescription.setText("Summary : " + varDescription);
+
+        String varUpdated = bundle.getString("varTransferUpdated");
+        textViewUpdated.setText("Last updated : " + varUpdated);
+
+        String varCoord = bundle.getString("varTransferCoord");
+        textViewCoord.setText("Geographic position : " + varCoord);
     }
 }

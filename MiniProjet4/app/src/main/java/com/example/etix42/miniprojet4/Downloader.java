@@ -44,6 +44,8 @@ public class Downloader extends AppCompatActivity {
 
             String titre = "";
             String description = "";
+            String updated = "";
+            String coord = "";
 
             String rssUrl = (String) params[0];
             tv = (TextView) params[1];
@@ -72,18 +74,30 @@ public class Downloader extends AppCompatActivity {
                                 //Log.d("titre",titre);
                                 //result += titre + '\n';
                             }
-                            else if (xpp.getName().equals("point")) {
+                            else if (xpp.getName().equals("summary")) {
                                 description = xpp.nextText();
                                 //Log.d("description",description);
                                 //result += description + '\n';
+                            }
+                            else if (xpp.getName().equals("updated")) {
+                                updated = xpp.nextText();
+                                //Log.d("updated",updated);
+                                //result += updated + '\n';
+                            }
+                            else if (xpp.getName().equals("coord")) {
+                                coord = xpp.nextText();
+                                //Log.d("coord",coord);
+                                //result += coord + '\n';
                             }
 
 
 
                             //buffer qui vérifie si le dernier est pareil que le précédent
                             if(!titre.equalsIgnoreCase(bufferTitle)) {
-                                seisme seisme = new seisme(titre, description);
-                                seismeList.add(seisme);
+                                if(!titre.equalsIgnoreCase("USGS Magnitude 4.5+ Earthquakes, Past Week")) {
+                                    seisme seisme = new seisme(titre, description, updated, coord);
+                                    seismeList.add(seisme);
+                                }
                             }
                             bufferTitle = titre;
                             //bufferDescription = bufferDescription;
