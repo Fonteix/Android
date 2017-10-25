@@ -41,7 +41,6 @@ public class Downloader extends AppCompatActivity {
         protected String doInBackground(Object... params) {
 
             String result = "";
-            String descriptions = "";
 
             String titre = "";
             String description = "";
@@ -80,25 +79,15 @@ public class Downloader extends AppCompatActivity {
                             }
 
 
-
+                            //buffer qui vérifie si le dernier est pareil que le précédent
                             if(!titre.equalsIgnoreCase(bufferTitle)) {
-                                //buffer qui vérifie si le dernier est pareil que le précédent
-                                Log.d("titre",titre);
-                                Log.d("description",description);
                                 seisme seisme = new seisme(titre, description);
                                 seismeList.add(seisme);
                             }
-
                             bufferTitle = titre;
                             bufferDescription = bufferDescription;
-
-
                         }
 
-
-
-                        //titre = "";
-                        //description = "";
 
                         eventType = xpp.next();
                     }
