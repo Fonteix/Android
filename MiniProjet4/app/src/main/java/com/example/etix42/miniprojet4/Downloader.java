@@ -75,8 +75,8 @@ public class Downloader extends AppCompatActivity {
                             }
                         }
 
-                        //seisme seisme = new seisme(titre, description);
-                        //seismeList.add(seisme);
+                        seisme seisme = new seisme(titre, description);
+                        seismeList.add(seisme);
 
 
                         eventType = xpp.next();
@@ -108,14 +108,13 @@ public class Downloader extends AppCompatActivity {
             Intent intent = new Intent(Downloader.this, MainActivity.class);
 
             //jai rajouté ca
-            String title = result;
+            /*String title = result;
             String coord = result;
             seisme seisme = new seisme(title, coord);
-            seismeList.add(seisme);
+            seismeList.add(seisme);*/
 
 
-            //le bug est ici
-            //intent.putExtra("ListeSeisme", seismeList);
+            intent.putExtra("ListeSeisme", seismeList);
 
 
             startActivity(intent);

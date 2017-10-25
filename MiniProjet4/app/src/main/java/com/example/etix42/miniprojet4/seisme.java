@@ -1,6 +1,8 @@
 package com.example.etix42.miniprojet4;
 
-public class seisme {
+import java.io.Serializable;
+
+public class seisme implements Serializable {
 
     private String title;
     private String description;
