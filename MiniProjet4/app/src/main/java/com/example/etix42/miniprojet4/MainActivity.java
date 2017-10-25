@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     ListView varListView;
     ArrayList<seisme> seismeListe = new ArrayList<>();
-    TextView tv;
+    //TextView tv;
     EditText title, link, description;
     Button b1, b2;
 
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tv = (TextView) findViewById(R.id.title);
+        //tv = (TextView) findViewById(R.id.title);
 
         Intent intent = getIntent();
         seismeListe = (ArrayList<seisme>) intent.getSerializableExtra("ListeSeisme");

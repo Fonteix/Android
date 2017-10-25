@@ -24,6 +24,7 @@ public class Downloader extends AppCompatActivity {
     ArrayList<seisme> seismeList = new ArrayList<>();
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +60,10 @@ public class Downloader extends AppCompatActivity {
                     XmlPullParser xpp = factory.newPullParser();
                     xpp.setInput(urlConnection.getInputStream(), "UTF-8");
 
+
+
+                    String bufferTitle ="";
+                    String bufferDescription ="";
                     int eventType = xpp.getEventType();
                     while (eventType != XmlPullParser.END_DOCUMENT) {
 
@@ -66,18 +71,34 @@ public class Downloader extends AppCompatActivity {
                             if (xpp.getName().equals("title")) {
                                 titre = xpp.nextText();
                                 //Log.d("titre",titre);
-                                result += titre + '\n';
+                                //result += titre + '\n';
                             }
                             else if (xpp.getName().equals("point")) {
                                 description = xpp.nextText();
                                 //Log.d("description",description);
-                                descriptions += description + '\n';
+                                //result += description + '\n';
                             }
+
+
+
+                            if(!titre.equalsIgnoreCase(bufferTitle)) {
+                                //buffer qui vérifie si le dernier est pareil que le précédent
+                                Log.d("titre",titre);
+                                Log.d("description",description);
+                                seisme seisme = new seisme(titre, description);
+                                seismeList.add(seisme);
+                            }
+
+                            bufferTitle = titre;
+                            bufferDescription = bufferDescription;
+
+
                         }
 
-                        seisme seisme = new seisme(titre, description);
-                        seismeList.add(seisme);
 
+
+                        //titre = "";
+                        //description = "";
 
                         eventType = xpp.next();
                     }
