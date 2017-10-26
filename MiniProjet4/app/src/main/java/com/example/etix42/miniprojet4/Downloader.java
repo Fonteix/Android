@@ -84,9 +84,9 @@ public class Downloader extends AppCompatActivity {
                                 //Log.d("updated",updated);
                                 //result += updated + '\n';
                             }
-                            else if (xpp.getName().equals("coord")) {
+                            else if (xpp.getName().equals("point")) {
                                 coord = xpp.nextText();
-                                //Log.d("coord",coord);
+                                //Log.d("coord------------------------------------------------------",coord);
                                 //result += coord + '\n';
                             }
 

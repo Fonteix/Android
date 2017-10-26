@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     ListView varListView;
     ArrayList<seisme> seismeListe = new ArrayList<>();
 
+
     final ArrayList<HashMap<String, String>> listItem = new ArrayList<HashMap<String, String>>();
     HashMap<String, String> map;
 
@@ -40,14 +41,16 @@ public class MainActivity extends AppCompatActivity {
         TestWifiData();
 
 
+
         Intent intent = getIntent();
         seismeListe = (ArrayList<seisme>) intent.getSerializableExtra("ListeSeisme");
 
         //Création de la liste
         varListView = (ListView) findViewById(R.id.listView);
 
-        //final ArrayList<HashMap<String, String>> listItem = new ArrayList<HashMap<String, String>>();
-        //HashMap<String, String> map;
+        //On receptionne l'intent du downloader pour maps
+        ArrayList listeReceptionnee = intent.getParcelableArrayListExtra("ListeSeisme");
+        seismeListe = listeReceptionnee;
 
 
         //color(varListView);
@@ -61,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             map.put("Title", seisme.getTitle());
             map.put("Description", seisme.getDescription());
             map.put("Updated",seisme.getUpdated());
-            map.put("Coord",seisme.getUpdated());
+            map.put("Coord",seisme.getCoord());
             listItem.add(map);
         }
 
@@ -81,14 +84,21 @@ public class MainActivity extends AppCompatActivity {
                 // Get the current item from ListView
                 View view = super.getView(position,convertView,parent);
 
-                //varListView.toString().contains("M 5.4")
-                if (position %2 == 1) {
 
+                //String[] decoupe = getTitle().toString().split(" ");
+                //Float magnitude = Float.valueOf(decoupe[1]);
+
+
+                //Log.d("magnitude---------------------------", .getTitle());
+
+                //varListView.toString().contains("M 5.4")
+                //if (position %2 == 1) {
+                /*if (magnitude < 4) {
                     view.setBackgroundColor(Color.parseColor("#99ccff"));
                 }
                 else {
                     view.setBackgroundColor(Color.parseColor("#ff9999"));
-                }
+                }*/
 
                 return view;
             }
@@ -176,17 +186,4 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-    /*public void color(View view) {
-        varListView = (ListView) findViewById(R.id.listView);
-
-        for(seisme seisme : seismeListe) {
-
-            if (varListView.toString().contains("4")) {
-                varListView.setBackgroundColor(Color.RED);
-            }
-            Log.d("varlistCOUCOUMANONview", varListView.toString());
-        }
-    }*/
-
 }
