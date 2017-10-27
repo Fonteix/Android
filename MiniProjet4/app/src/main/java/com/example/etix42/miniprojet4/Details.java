@@ -10,6 +10,7 @@ public class Details extends AppCompatActivity {
 
     float longitude;
     float latitude;
+    String varTitle, varDescription, varUpdated, varCoord;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,18 +25,17 @@ public class Details extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
 
-        String varTitle = bundle.getString("varTransferTitle");
+        varTitle = bundle.getString("varTransferTitle");
         textViewTitle.setText(varTitle); //on peut mettre "Title " + varTitle
 
-        String varDescription = bundle.getString("varTransferDescription");
+        varDescription = bundle.getString("varTransferDescription");
         textViewDescription.setText(varDescription);
 
-        String varUpdated = bundle.getString("varTransferUpdated");
+        varUpdated = bundle.getString("varTransferUpdated");
         textViewUpdated.setText(varUpdated);
 
-        String varCoord = bundle.getString("varTransferCoord");
+        varCoord = bundle.getString("varTransferCoord");
         textViewCoord.setText(varCoord);
-
 
 
         String[] decoupe = varCoord.split(" ");
@@ -47,6 +47,7 @@ public class Details extends AppCompatActivity {
         //Passe à maps
 
         Intent intent = new Intent(Details.this, MapsActivity.class);
+        intent.putExtra("Title", varTitle);
         intent.putExtra("Longitude", longitude);
         intent.putExtra("Latitude", latitude);
         startActivity(intent);
